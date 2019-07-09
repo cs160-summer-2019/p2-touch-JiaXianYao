@@ -40,8 +40,8 @@
 		}
 
 		.small-box {
-			width: 100px;
-			height: 100px;
+			width: 200px;
+			height: 200px;
 			background: #7ce6df;
 			display: flex;
 			align-items: center;
@@ -84,7 +84,67 @@
 		</div>
 	</div>
 	<script>
-	  // your solution here
+    var rotBox = document.getElementById('rotate-box');
+    var rotBoxHammer = new Hammer(rotBox);
+    rotBoxHammer.get('rotate').set({ enable: true });
+    rotBoxHammer.on('pan pinch press rotate swipe tap', (ev) => {
+      if (ev.type === 'rotate') {
+        rotBox.textContent = 'Rotate Detected';
+      } else {
+        rotBox.textContent = 'Not Rotate';
+      }
+    });
+    
+    var pinchBox = document.getElementById('pinch-box');
+    var pinchBoxHammer = new Hammer(pinchBox);
+    pinchBoxHammer.get('pinch').set({ enable: true });
+    pinchBoxHammer.on('pan pinch press rotate swipe tap', (ev) => {
+      if (ev.type === 'pinch') {
+        pinchBox.textContent = 'Pinch Detected';
+      } else {
+        pinchBox.textContent = 'Not Pinch';
+      }
+    });
+    
+    var pressBox = document.getElementById('press-box');
+    var pressBoxHammer = new Hammer(pressBox);
+    pressBoxHammer.on('pan pinch press rotate swipe tap', (ev) => {
+      if (ev.type === 'press') {
+        pressBox.textContent = 'Press Detected';
+      } else {
+        pressBox.textContent = 'Not Press';
+      }
+    });
+    
+    var panBox = document.getElementById('pan-box');
+    var panBoxHammer = new Hammer(panBox);
+    panBoxHammer.on('pan pinch press rotate swipe tap', (ev) => {
+      if (ev.type === 'pan') {
+        panBox.textContent = 'Pan Detected';
+      } else {
+        panBox.textContent = 'Not Pan';
+      }
+    });
+    
+    var tapBox = document.getElementById('tap-box');
+    var tapBoxHammer = new Hammer(tapBox);
+    tapBoxHammer.on('pan pinch press rotate swipe tap', (ev) => {
+      if (ev.type === 'tap') {
+        tapBox.textContent = 'Tap Detected';
+      } else {
+        tapBox.textContent = 'Not Tap';
+      }
+    });
+    
+    var swipeBox = document.getElementById('swipe-box');
+    var swipeBoxHammer = new Hammer(swipeBox);
+    swipeBoxHammer.on('pinch press rotate swipe tap', (ev) => {
+      if (ev.type === 'swipe') {
+        swipeBox.textContent = 'Swipe Detected';
+      } else {
+        swipeBox.textContent = 'Not Swipe';
+      }
+    });
   </script>
 </body>
 </html>
